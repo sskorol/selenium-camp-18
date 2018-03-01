@@ -1,7 +1,5 @@
 package io.github.sskorol.utils;
 
-import io.qameta.allure.Allure;
-
 import java.io.ByteArrayInputStream;
 
 import static io.qameta.allure.Allure.addAttachment;

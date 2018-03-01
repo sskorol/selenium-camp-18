@@ -2,7 +2,7 @@
 
 git stash -q --keep-index
 
-./gradlew clean checkQualityMain checkQualityTest -PisStrict=true
+./gradlew clean sonarqube -x test -Dsonar.buildbreaker.skip=false
 RESULT=$?
 
 git stash pop -q

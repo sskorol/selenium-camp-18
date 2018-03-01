@@ -138,7 +138,7 @@
         <!--<module name="JavadocParagraph"/>-->
         <module name="JavadocStyle"/>
         <!--<module name="JavadocTagContinuationIndentation"/>-->
-        <module name="JavadocType"/>
+        <!--<module name="JavadocType"/>-->
         <!--<module name="JavadocVariable"/>-->
         <module name="NonEmptyAtclauseDescription"/>
         <!--<module name="SingleLineJavadoc"/>-->

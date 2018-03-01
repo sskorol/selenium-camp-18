@@ -13,8 +13,10 @@ node {
             }
         }
 
-        stage('Run quality checks and tests') {
-            sh './gradlew clean checkQualityMain checkQualityTest test'
+        withSonarQubeEnv("Sonar") {
+            stage('Run quality checks and tests') {
+                sh './gradlew --info sonarqube'
+            }
         }
     } catch (ex) {
         echo "${ex}"
@@ -34,6 +36,15 @@ node {
             publish.checkstyleReport()
             publish.pmdReport()
             publish.findbugsReport()
+        }
+
+        stage("Quality Gate"){
+            timeout(time: 3, unit: 'MINUTES') {
+                def qg = waitForQualityGate()
+                if (qg.status != 'OK') {
+                    error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                }
+            }
         }
     }
 }

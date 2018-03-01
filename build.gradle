@@ -1,5 +1,5 @@
 plugins {
-    id 'ru.vyarus.quality' version '2.4.0'
+    id 'org.sonarqube' version '2.6'
 }
 
 apply plugin: 'java'
@@ -40,6 +40,4 @@ test {
     systemProperty 'allure.results.directory', 'build/allure-results'
 }
 
-quality {
-    strict = project.hasProperty("isStrict") ? project.property("isStrict").toBoolean() : (System.getenv("IS_STRICT") != null ? System.getenv("IS_STRICT").toBoolean() : true)
-}
+project.tasks["sonarqube"].dependsOn "compileTestJava"

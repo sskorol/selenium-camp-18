@@ -8,9 +8,9 @@ import static org.openqa.selenium.By.cssSelector;
 
 public class DashboardPage extends AbstractPage {
 
-    private By label_welcome = cssSelector("[data-qa='welcome']");
+    private final By labelWelcome = cssSelector("[data-qa='welcome']");
 
     public String username() {
-        return substringBetween(text(label_welcome), ", ", "!");
+        return substringBetween(text(labelWelcome), ", ", "!");
     }
 }

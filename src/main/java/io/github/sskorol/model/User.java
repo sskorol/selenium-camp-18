@@ -1,19 +1,19 @@
 package io.github.sskorol.model;
 
-import java.util.LinkedList;
+import java.util.List;
 
 import static java.util.Collections.singletonList;
 
 public class User {
 
-    String username;
-    String password;
-    LinkedList<Role> roles;
+    private final String username;
+    private final String password;
+    private final List<Role> roles;
 
-    public User(String username, String password, LinkedList<Role> roles) {
+    public User(final String username, final String password, final List<Role> roles) {
         this.username = username;
         this.password = password;
-        roles = roles;
+        this.roles = roles;
     }
 
     public String getUsername() {
@@ -24,11 +24,12 @@ public class User {
         return password;
     }
 
-    public LinkedList<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
+    @SuppressWarnings("MultipleStringLiterals")
     public static User admin() {
-        return new User("admin", "admin", new LinkedList<>(singletonList(Role.admin)));
+        return new User("admin", "admin", singletonList(Role.admin));
     }
 }
