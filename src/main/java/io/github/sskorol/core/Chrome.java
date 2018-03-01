@@ -13,10 +13,12 @@ public class Chrome implements Browser {
         return Name.Chrome;
     }
 
+    @Override
     public boolean isRemote() {
         return true;
     }
 
+    @Override
     public Capabilities configuration(final XmlConfig config) {
         final ChromeOptions options = new ChromeOptions();
         options.setCapability("applicationContainers", BASE_CONFIG.appContainerName());

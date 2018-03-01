@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import static org.apache.commons.lang3.StringUtils.substringBetween;
 import static org.openqa.selenium.By.cssSelector;
 
+@SuppressWarnings("JavadocType")
 public class DashboardPage extends AbstractPage {
 
     private final By labelWelcome = cssSelector("[data-qa='welcome']");
