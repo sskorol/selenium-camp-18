@@ -1,0 +1,9 @@
+#!/bin/sh
+
+git stash -q --keep-index
+
+./gradlew clean checkQualityMain checkQualityTest -PisStrict=true
+RESULT=$?
+
+git stash pop -q
+exit $RESULT

@@ -1,0 +1,45 @@
+plugins {
+    id 'ru.vyarus.quality' version '2.4.0'
+}
+
+apply plugin: 'java'
+apply from: rootProject.file('gradle/install-git-hooks.gradle')
+
+repositories {
+    jcenter()
+}
+
+configurations {
+    agent
+}
+
+[compileJava, compileTestJava]*.options*.compilerArgs = ['-parameters']
+
+dependencies {
+    agent 'org.aspectj:aspectjweaver:1.8.13'
+    compile('io.qameta.allure:allure-testng:2.6.0',
+            'io.github.sskorol:test-data-supplier:1.4.5',
+            'io.github.sskorol:webdriver-supplier:0.8.0')
+    testCompile 'org.assertj:assertj-core:3.9.1'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion '4.6'
+}
+
+test {
+    doFirst {
+        jvmArgs "-javaagent:${configurations.agent.singleFile}"
+    }
+
+    useTestNG() {
+        listeners << 'io.github.sskorol.listeners.BeforeMethodListener'
+        suites 'src/test/resources/suites/smoke-suite.xml'
+    }
+
+    systemProperty 'allure.results.directory', 'build/allure-results'
+}
+
+quality {
+    strict = project.hasProperty("isStrict") ? project.property("isStrict").toBoolean() : (System.getenv("IS_STRICT") != null ? System.getenv("IS_STRICT").toBoolean() : true)
+}
