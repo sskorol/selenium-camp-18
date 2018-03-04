@@ -6,7 +6,7 @@ This project provides [talk's](https://seleniumcamp.com/talk/the-essential-tools
 ## Branches
 
 There're several branches, which may help following the main idea of the talk:
-1. **step1/full-rft**: contains lots of different violiations, which could be easily detected by [gradle-quality-plugin](https://github.com/xvik/gradle-quality-plugin). Use the following command to run them all:
+1. **step1/full-rft**: contains lots of different violiations, which could be easily detected by [gradle-quality-plugin](https://github.com/xvik/gradle-quality-plugin). Use the following command to run all checks against **main** and **test** folders:
 ```
 ./gradlew clean checkQualityMain checkQualityTest
 ```
@@ -28,7 +28,7 @@ All key branches contain `pre-commit` hook file, which might be automatically in
 
 ## Jenkins
 
-**Jenkinsfile** uses shared library for Allure / quality reports generation. So you have to set it up on Jenkins pointing to [shared-libraries](https://github.com/sskorol/shared-libraries) sources. Or just use direct calls to corresponding plugins in pipeline.
+**Jenkinsfile** uses shared library for Allure / quality reports generation. So you have to set it up on Jenkins pointing to [shared-libraries](https://github.com/sskorol/shared-libraries) sources. Or just use direct calls to corresponding plugins in pipeline. If you want to emulate the same scenario as was performed on demo, you have to setup **Bitbucket Team/Project** on Jenkins (with all required webhooks) and refer to your Bitbucker Server project root.
 
 ## Docker
 
