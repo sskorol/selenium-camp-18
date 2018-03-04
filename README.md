@@ -6,7 +6,7 @@ This project provides [talk's](https://seleniumcamp.com/talk/the-essential-tools
 ## Branches
 
 There're several branches, which may help following the main idea of the talk:
-1. **step1/full-rft**: contains lots of different violiations, which could be easily detected by [gradle-quality-plugin](https://github.com/xvik/gradle-quality-plugin). Use the following command to run them all:
+1. **step1/full-rft**: contains lots of different violiations, which could be easily detected by [gradle-quality-plugin](https://github.com/xvik/gradle-quality-plugin). Use the following command to run all checks against **main** and **test** folders:
 ```
 ./gradlew clean checkQualityMain checkQualityTest
 ```
